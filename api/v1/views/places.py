@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-""" View for Place objects that handles default API actions """
+"""
+View for Place objects
+that handles default API actions.
+"""
 from api.v1.views import app_views
 from flask import jsonify, abort, make_response, request
 from models import storage
@@ -13,7 +16,9 @@ from os import getenv
 @app_views.route('/cities/<city_id>/places', methods=['GET'],
                  strict_slashes=False)
 def places(city_id):
-    """ Retrieves the list of all Place objects """
+    """
+    Retrieves the list of all Place objects.
+    """
     city = storage.get("City", city_id)
     if not city:
         abort(404)
@@ -22,7 +27,9 @@ def places(city_id):
 
 @app_views.route('/places/<place_id>', methods=['GET'], strict_slashes=False)
 def r_place_id(place_id):
-    """ Retrieves a Place object """
+    """
+    Retrieves a Place object.
+    """
     place = storage.get("Place", place_id)
     if not place:
         abort(404)
@@ -32,7 +39,9 @@ def r_place_id(place_id):
 @app_views.route('/places/<place_id>', methods=['DELETE'],
                  strict_slashes=False)
 def del_place(place_id):
-    """ Deletes a Place object """
+    """
+    Deletes a Place object.
+    """
     place = storage.get("Place", place_id)
     if not place:
         abort(404)
@@ -44,7 +53,9 @@ def del_place(place_id):
 @app_views.route('/cities/<city_id>/places', methods=['POST'],
                  strict_slashes=False)
 def post_place(city_id):
-    """ Creates a Place object """
+    """
+    Creates a Place object.
+    """
     city = storage.get("City", city_id)
     if not city:
         abort(404)
@@ -68,7 +79,9 @@ def post_place(city_id):
 @app_views.route('/places/<place_id>', methods=['PUT'],
                  strict_slashes=False)
 def put_place(place_id):
-    """ Updates a Place object """
+    """
+    Updates a Place object.
+    """
     place = storage.get("Place", place_id)
     if not place:
         abort(404)
